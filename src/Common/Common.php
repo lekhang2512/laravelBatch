@@ -76,12 +76,12 @@ class Common
             } elseif (is_string($value)) {
                 $safeJsonData[$key] = self::safeJsonString($value);
             } elseif (is_array($value)) {
-                $safeJsonData[$key] = self::safeJson(json_encode($value), true);
+                $safeJsonData[$key] = self::safeJson(json_encode($value, JSON_UNESCAPED_UNICODE), true);
             } else {
                 $safeJsonData[$key] = $value;
             }
         }
-        return $asArray ? $safeJsonData : json_encode($safeJsonData);
+        return $asArray ? $safeJsonData : json_encode($safeJsonData, JSON_UNESCAPED_UNICODE);
     }
 
 }
